@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 2.7,
-          "height": 2.7,
-          "width": 2.7
+          "drill": 0.762,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -471,6 +471,10 @@
     [
       "13decee3-1b64-4c34-802a-57fdd4ff7914",
       ""
+    ],
+    [
+      "f9fde313-a430-4b4f-a7d0-47fdcbcf8540",
+      "Foot Switch"
     ]
   ],
   "text_variables": {}
