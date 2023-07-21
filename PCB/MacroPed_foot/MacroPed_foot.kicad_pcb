@@ -3750,7 +3750,7 @@
     (stroke (width 0.1) (type default)) (layer "Edge.Cuts") (tstamp a4de758d-7621-44eb-8b82-822ee1afba10))
   (gr_line (start 114 73) (end 96 73)
     (stroke (width 0.1) (type default)) (layer "Edge.Cuts") (tstamp bcfd9798-c888-4e08-8d1e-8e8bf260c800))
-  (gr_text "MacroPed Footswitch Rev0.1\nMade with   by Devnol in Greece" (at 93.5 28 270) (layer "F.SilkS") (tstamp 2eaae2dd-f657-4cce-847f-c9f9e1179ec8)
+  (gr_text "MacroPed Footswitch Rev0.2\nMade with   by Devnol in Greece" (at 93.5 28 270) (layer "F.SilkS") (tstamp 2eaae2dd-f657-4cce-847f-c9f9e1179ec8)
     (effects (font (size 1 1) (thickness 0.25) bold) (justify left bottom))
   )
   (gr_text "♥︎" (at 93.5 36 270) (layer "F.SilkS") (tstamp bbfb7042-2cc7-4396-88c9-a339a4a5777c)
