@@ -69,13 +69,12 @@ map1 = (
 		"release": [Keycode.ESCAPE]
 	},
 	{
-		"mode": VIM,
-		"press": [Keycode.V],
-		"release": [Keycode.Y]
+		"mode": NORMAL,
+		"press": [Keycode.UP_ARROW]
 	},
 	{
 		"mode": NORMAL,
-		"press": [Keycode.SHIFT, Keycode.FOUR]
+		"press": [Keycode.DOWN_ARROW]
 	}
 )
 
