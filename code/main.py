@@ -8,42 +8,21 @@ from adafruit_hid.keycode import Keycode
 
 from keymaps import *
 
+led = DigitalInOut(board.LED)
+led.direction = Direction.OUTPUT
+
 kbd = Keyboard(usb_hid.devices)
 
 keymap = none
-
-def init_keymap():
-	global keymap
-	for button in range(len(buttons) - 1): #btn 7 is reserved for storage mount
-		if not buttons[button].value:
-			keymap = keymapslist[button]
-			print("keymap changed to " + str(keymapslist[button]))
-			break
-
-#setup 7 buttons from GP 9-15
-button_pins = [board.GP9, board.GP10, board.GP11, board.GP12, board.GP13, board.GP14, board.GP15]
-buttons = []
-for pin in button_pins:
-	button = DigitalInOut(pin)
-	button.direction = Direction.INPUT
-	button.pull = Pull.UP
-	buttons.append(button)
-
-print("buttons initialized")
-
-init_keymap()
-
-print("keymap initialized")
-
-sleep(4) #wait before setting state to false
-button_state = [False] * len(buttons) #populate a list to store the state of each button
-
-Run = True
+Run = False
 
 # menu loop for changing keymaps
 def menu():
+	global keymap
 	global Run
 	while not Run:
+		#blink  the led to indicate menu mode
+		led.value = not led.value
 		for button in range(len(buttons)): #btn 7 is reserved for storage mount
 			if not buttons[button].value:
 				if button == 6:
@@ -53,12 +32,14 @@ def menu():
 				Run = True
 				break
 
-		sleep(0.01)
+		sleep(0.5)
+	led.value = False
 	main() # return to main loop
 
 # main operation loop
 def main():
 	global Run 
+	button_state = [False] * len(buttons) #populate a list to store the state of each button
 	while Run:
 		for button in range(len(buttons)):
 			mode = keymap[button]["mode"] # get mode
@@ -90,8 +71,8 @@ def main():
 					kbd.send(*keymap[button]["release"])
 				if mode != LOCK: button_state[button] = False
 		# If both buttons 1 and 7 are pressed for longer than 5 seconds, reset the board
-		rstcount = 0
 		if not buttons[0].value and not buttons[6].value:
+			rstcount = 0
 			while rstcount < 5:
 				sleep (1)
 				rstcount += 1
@@ -101,7 +82,23 @@ def main():
 			if rstcount == 5:
 				Run = False # exit the loop
 		sleep(0.01) # debounce
+	led.value = True # indicate entering menu mode
 	sleep(2) # wait before returning to menu so user can lift their feet
 	menu() # return to menu
+
+#setup 7 buttons from GP 9-15
+button_pins = [board.GP9, board.GP10, board.GP11, board.GP12, board.GP13, board.GP14, board.GP15]
+buttons = []
+for pin in button_pins:
+	button = DigitalInOut(pin)
+	button.direction = Direction.INPUT
+	button.pull = Pull.UP
+	buttons.append(button)
+
+print("buttons initialized")
+
+menu()
+
+print("keymap initialized")
 
 main() # never forget to call the main loop		

@@ -14,17 +14,17 @@ MACRO = 4 #send a sequence of keys in series, this is useful for things like ope
 #the "mode" key is a mode enum (see above)
 #the "press" key is a list of keycodes to send when the button is pressed, depending on the mode
 #the "release" key is a list of keycodes to send when the button is released, only used in DUAL mode
-#the "delay" key is an array of floats representing the delay in seconds between each key in the macro, only used in MACRO mode
+#the "delay" key is an array of floats representing the delay in seconds after each key in the macro, only used in MACRO mode
 
 map1 = (
 	{
-		"mode":PRESS,
+		"mode": PRESS,
 		"press": [Keycode.COMMAND, Keycode.CONTROL, Keycode.SHIFT, Keycode.FOUR]
 	},
 	{
 		"mode": MACRO,
 		"press": [[Keycode.ESCAPE], [Keycode.SHIFT, Keycode.SEMICOLON], [Keycode.W], [Keycode.ENTER]],
-		"delay": [0.1, 2, 0.1]
+		"delay": [0.1, 2, 0.1, 0]
 	},
 	{
 		"mode": PRESS,
@@ -49,7 +49,38 @@ map1 = (
 	}
 )
 
-none = ()
+test = (
+	{
+		"mode": PRESS,
+		"press": [Keycode.A]
+	},
+	{
+		"mode": PRESS,
+		"press": [Keycode.B]
+	},
+	{
+		"mode": PRESS,
+		"press": [Keycode.C]
+	},
+	{
+		"mode": PRESS,
+		"press": [Keycode.D]
+	},
+	{
+		"mode": PRESS,
+		"press": [Keycode.E]
+	},
+	{
+		"mode": PRESS,
+		"press": [Keycode.F]
+	},
+	{
+		"mode": PRESS,
+		"press": [Keycode.G]
+	}
+)
+
+none = ([]*7)
 
 # Assign a keymap to each of the 6 buttons (7th button is reserved for storage mount)
-keymapslist = [none, none, none, none, map1, none]
+keymapslist = [test, none, none, none, map1, none]
