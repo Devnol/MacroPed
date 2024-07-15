@@ -13,7 +13,7 @@ led.direction = Direction.OUTPUT
 
 kbd = Keyboard(usb_hid.devices)
 
-keymap = VScodeVim
+keymap = none
 Run = False
 
 # menu loop for changing keymaps
@@ -29,6 +29,8 @@ def menu():
 					microcontroller.reset() # hard reset the board
 				keymap = keymapslist[button]
 				print("keymap changed to " + str(keymapslist[button]))
+				led.value = True
+				sleep(2) # wait before returning to main loop
 				Run = True
 				break
 
@@ -73,13 +75,13 @@ def main():
 		# If both buttons 1 and 7 are pressed for longer than 5 seconds, reset the board
 		if not buttons[0].value and not buttons[6].value:
 			rstcount = 0
-			while rstcount < 5:
+			while rstcount < 2:
 				sleep (1)
 				rstcount += 1
 				if buttons[0].value or buttons[6].value:
 					sleep(1)
 					break
-			if rstcount == 5:
+			if rstcount == 2:
 				Run = False # exit the loop
 		sleep(0.01) # debounce
 	led.value = True # indicate entering menu mode

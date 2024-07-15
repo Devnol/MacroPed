@@ -14,7 +14,7 @@ MACRO = 4 #send a sequence of keys in series, this is useful for things like ope
 #the "mode" key is a mode enum (see above)
 #the "press" key is a list of keycodes to send when the button is pressed, depending on the mode
 #the "release" key is a list of keycodes to send when the button is released, only used in DUAL mode
-#the "delay" key is an array of floats representing the delay in seconds after each key in the macro, only used in MACRO mode
+#the "delay" key is an array of floats representing the delay in seconds after each key in the macro, only used in MACRO mode (e.g. to wait for UI))
 
 #Keymap for Visual Studio Code with Vim extension
 VScodeVim = (
@@ -52,35 +52,38 @@ VScodeVim = (
 )
 
 Fusion360 = (
-	{
-		"mode": PRESS,
-		"press": [Keycode.CONTROL, Keycode.SPACE]
+	{ # open parametric menu
+		"mode": MACRO,
+		"press": [[Keycode.S], [Keycode.P], [Keycode.A], [Keycode.R], [Keycode.A], [Keycode.M], [Keycode.ENTER]],
+		"delay": [0.2, 0.1, 0.1, 0.1, 0.1, 0.2, 0]
 	},
-	{
-		"mode": PRESS,
-		"press": [Keycode.CONTROL, Keycode.SPACE]
-	},
-	{ # orbit
+	{ # orbit with mouse
 		"mode": PRESS,
 		"press": [Keycode.SHIFT]
 	},
-	{ # open parametric menu
-		"mode": MACRO,
-		"press": [[Keycode.S], [Keycode.P, Keycode.A, Keycode.R, Keycode.A, Keycode.M], [Keycode.ENTER]],
-		"delay": [0.4, 0.2, 0]
-	},
-	{
+	{ # zoom with mouse
 		"mode": PRESS,
 		"press": [Keycode.COMMAND]
 	},
-	{
-		"mode": PRESS,
-		"press": [Keycode.CONTROL, Keycode.SPACE]
+	{ # sketch constraint: midpoint 
+		"mode": MACRO,
+		"press": [[Keycode.S], [Keycode.M], [Keycode.I], [Keycode.D], [Keycode.ENTER]],
+		"delay": [0.2, 0.1, 0.1, 0.2, 0]
+	},
+	{ # sketch constraint: coincident
+		"mode": MACRO,
+		"press": [[Keycode.S], [Keycode.C], [Keycode.O], [Keycode.I], [Keycode.N], [Keycode.ENTER]],
+		"delay": [0.2, 0.1, 0.1, 0.1, 0.2, 0]
+	},
+	{ # sketch constraint: collinear
+		"mode": MACRO,
+		"press": [[Keycode.S], [Keycode.C], [Keycode.O], [Keycode.L], [Keycode.ENTER]],
+		"delay": [0.2, 0.1, 0.1, 0.2, 0]
 	},
 	{ # create sketch
 		"mode": MACRO,
-		"press": [[Keycode.S], [Keycode.S, Keycode.K, Keycode.E, Keycode.T], [Keycode.ENTER]],
-		"delay": [0.4, 0.2, 0]
+		"press": [[Keycode.S], [Keycode.S], [Keycode.K], [Keycode.E], [Keycode.T], [Keycode.ENTER]],
+		"delay": [0.2, 0.1, 0.1, 0.1, 0.2, 0]
 	}
 )
 
