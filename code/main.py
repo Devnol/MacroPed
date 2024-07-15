@@ -13,7 +13,7 @@ led.direction = Direction.OUTPUT
 
 kbd = Keyboard(usb_hid.devices)
 
-keymap = none
+keymap = VScodeVim
 Run = False
 
 # menu loop for changing keymaps

@@ -16,36 +16,71 @@ MACRO = 4 #send a sequence of keys in series, this is useful for things like ope
 #the "release" key is a list of keycodes to send when the button is released, only used in DUAL mode
 #the "delay" key is an array of floats representing the delay in seconds after each key in the macro, only used in MACRO mode
 
-map1 = (
-	{
+#Keymap for Visual Studio Code with Vim extension
+VScodeVim = (
+	{ # open command palette
 		"mode": PRESS,
-		"press": [Keycode.COMMAND, Keycode.CONTROL, Keycode.SHIFT, Keycode.FOUR]
+		"press": [Keycode.COMMAND, Keycode.SHIFT, Keycode.P]
 	},
-	{
+	{ # save file
 		"mode": MACRO,
 		"press": [[Keycode.ESCAPE], [Keycode.SHIFT, Keycode.SEMICOLON], [Keycode.W], [Keycode.ENTER]],
-		"delay": [0.1, 2, 0.1, 0]
+		"delay": [0.1, 0.1, 0.1, 0]
 	},
-	{
+	{ # hold for visual mode
+		"mode": DUAL,
+		"press": [Keycode.V],
+		"release": [Keycode.ESCAPE]
+	},
+	{ # jump to definition
 		"mode": PRESS,
-		"press": [Keycode.SHIFT]
+		"press": [Keycode.F12]
 	},
-	{
-		"mode": PRESS,
-		"press": [Keycode.L]
-	},
-	{
+	{ # hold for insert mode
 		"mode": DUAL,
 		"press": [Keycode.I],
 		"release": [Keycode.ESCAPE]
 	},
+	{ # Open integrated terminal
+		"mode": PRESS,
+		"press": [Keycode.CONTROL, Keycode.GRAVE_ACCENT]
+	},
+	{ # Show IntelliSense
+		"mode": PRESS,
+		"press": [Keycode.CONTROL, Keycode.SPACE]
+	}
+)
+
+Fusion360 = (
 	{
 		"mode": PRESS,
-		"press": [Keycode.UP_ARROW]
+		"press": [Keycode.CONTROL, Keycode.SPACE]
 	},
 	{
 		"mode": PRESS,
-		"press": [Keycode.DOWN_ARROW]
+		"press": [Keycode.CONTROL, Keycode.SPACE]
+	},
+	{ # orbit
+		"mode": PRESS,
+		"press": [Keycode.SHIFT]
+	},
+	{ # open parametric menu
+		"mode": MACRO,
+		"press": [[Keycode.S], [Keycode.P, Keycode.A, Keycode.R, Keycode.A, Keycode.M], [Keycode.ENTER]],
+		"delay": [0.4, 0.2, 0]
+	},
+	{
+		"mode": PRESS,
+		"press": [Keycode.COMMAND]
+	},
+	{
+		"mode": PRESS,
+		"press": [Keycode.CONTROL, Keycode.SPACE]
+	},
+	{ # create sketch
+		"mode": MACRO,
+		"press": [[Keycode.S], [Keycode.S, Keycode.K, Keycode.E, Keycode.T], [Keycode.ENTER]],
+		"delay": [0.4, 0.2, 0]
 	}
 )
 
@@ -83,4 +118,4 @@ test = (
 none = ([]*7)
 
 # Assign a keymap to each of the 6 buttons (7th button is reserved for storage mount)
-keymapslist = [test, none, none, none, map1, none]
+keymapslist = [test, VScodeVim, Fusion360, none, none, none]
