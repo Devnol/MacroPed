@@ -87,6 +87,70 @@ Fusion360 = (
 	}
 )
 
+macOS = (
+	{ # take a screenshot	
+		"mode": DUAL,
+		"press": [Keycode.SHIFT, Keycode.COMMAND, Keycode.CONTROL, Keycode.FOUR],
+		"release": [Keycode.ESCAPE]
+	},
+	{ # iTerm drop-down
+		"mode": PRESS,
+		"press": [Keycode.COMMAND, Keycode.OPTION, Keycode.T]
+	},
+	{ # workspace left
+		"mode": PRESS,
+		"press": [Keycode.CONTROL, Keycode.LEFT_ARROW]
+	},
+	{ # open spotlight
+		"mode": PRESS,
+		"press": [Keycode.OPTION, Keycode.SPACE]
+	},
+	{ # workspace right
+		"mode": PRESS,
+		"press": [Keycode.CONTROL, Keycode.RIGHT_ARROW]
+	},
+	{ # open mission control
+		"mode": PRESS,
+		"press": [Keycode.CONTROL, Keycode.UP_ARROW]
+	},
+	{ # focus toolbar
+		"mode": PRESS,
+		"press": [Keycode.COMMAND, Keycode.SHIFT, Keycode.FORWARD_SLASH]
+	}
+)
+
+firefox = (
+	{ # open new tab
+		"mode": PRESS,
+		"press": [Keycode.COMMAND, Keycode.T]
+	},
+	{ # close tab
+		"mode": PRESS,
+		"press": [Keycode.COMMAND, Keycode.W]
+	},
+	{ # previous tab
+		"mode": PRESS,
+		"press": [Keycode.CONTROL, Keycode.SHIFT, Keycode.TAB]
+	},
+	{ # focus search bar
+		"mode": PRESS,
+		"press": [Keycode.COMMAND, Keycode.L]
+	},
+	{ # next tab
+		"mode": PRESS,
+		"press": [Keycode.CONTROL, Keycode.TAB]
+	},
+	{ # open last closed tab
+		"mode": PRESS,
+		"press": [Keycode.COMMAND, Keycode.SHIFT, Keycode.T]
+	},
+	{ # open bookmarks
+		"mode": PRESS,
+		"press": [Keycode.COMMAND, Keycode.B]
+	}
+
+)
+
 test = (
 	{
 		"mode": PRESS,
@@ -121,4 +185,4 @@ test = (
 none = ([]*7)
 
 # Assign a keymap to each of the 6 buttons (7th button is reserved for storage mount)
-keymapslist = [test, VScodeVim, Fusion360, none, none, none]
+keymapslist = [macOS, VScodeVim, Fusion360, firefox, none, test]
